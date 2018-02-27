@@ -1,7 +1,3 @@
-fabfile.py
-local.py
-local_urls.py
-
 ## migrations file
 ## **/migrations/**
 ## !**/migrations
