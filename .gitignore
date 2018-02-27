@@ -1,0 +1,29 @@
+fabfile.py
+local.py
+local_urls.py
+
+## migrations file
+## **/migrations/**
+## !**/migrations
+## !**/migrations/__init__.py
+
+## Directory-based project format:
+.idea/
+
+# Distribution / packaging
+work
+log
+.cache
+
+
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+## SQLite
+db.sqlite3
+
+## autoenv
+.env
+

@@ -1,0 +1,7 @@
+<h2>{{ object.title }}</h2>
+
+<p class="other_posts">
+    {% if object.get_previous_by_modify_date %}
+        <a href="{{ object.get_previous_post.get_absolute_url }}"></a>
+    {% endif %}
+</p>
