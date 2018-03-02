@@ -3,14 +3,14 @@
 <head>
     <title>{% block title %}Django Web Programming{% endblock %}</title>
 
-    {% load staticfiles %}
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}"/>
 </head>
 <body>
     <div id="header">
         <h2 class="maintitle">Easy&amp;Fast Django Web Programming</h2>
-        <h4 class="welcome">Welcome, <a href="#">shkim</a>/
+        <h4 class="welcome">Welcome,<a href="#">shkim</a>/
                                     <a href="#">Change Password</a>/
                                     <a href="#">Logout</a>
         </h4>
