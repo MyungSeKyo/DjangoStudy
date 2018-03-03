@@ -20,5 +20,6 @@ from MySite.views import HomeView
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('blog/', include('blog.urls', namespace='blog')),
+    path('bookmark/', include('bookmark.urls', namespace='bookmark')),
     path('admin/', admin.site.urls),
 ]

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from blog.models import Post
-# Register your models here.
+from bookmark.models import Bookmark
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -10,4 +10,9 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+class BookmarkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'url')
+
+
 admin.site.register(Post, PostAdmin)
+admin.site.register(Bookmark, BookmarkAdmin)
