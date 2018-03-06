@@ -1,15 +1,15 @@
-from django.urls import path
+from django.conf.urls import url
 from blog.views import *
 
 app_name = 'blog'
 
 urlpatterns = [
-    path('', PostLV.as_view(), name='index'),
-    path('post/', PostLV.as_view(), name='post_list'),
-    path('post/<slug:slug>/', PostDV.as_view(), name='post_detail'),
-    path('archive/', PostAV.as_view(), name='post_archive'),
-    path('<int:year>/', PostYAV.as_view(), name='post_year_archive'),
-    path('<int:year>/<month>/', PostMAV.as_view(), name='post_month_archive'),
-    path('<int:year>/<month>/<int:day>/', PostDAV.as_view(), name='post_day_archive'),
-    path('today/', PostTAV.as_view(), name='post_today_archive'),
+    url(r'^$', PostLV.as_view(), name='index'),
+    url(r'^post/$', PostLV.as_view(), name='post_list'),
+    url(r'^post/(?P<slug>[-\w]+)/$', PostDV.as_view(), name='post_detail'),
+    url(r'^archive/$', PostAV.as_view(), name='post_archive'),
+    url(r'^(?P<year>\d+)/$', PostYAV.as_view(), name='post_year_archive'),
+    url(r'^(?P<year>\d+)/(?P<month>[-\w]+)/$', PostMAV.as_view(), name='post_month_archive'),
+    url(r'^(?P<year>\d+)/(?P<month>[-\w]+)/(?P<day>\d+)/$', PostDAV.as_view(), name='post_day_archive'),
+    url(r'^today/$', PostTAV.as_view(), name='post_today_archive'),
 ]
