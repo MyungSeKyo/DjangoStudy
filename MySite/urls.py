@@ -17,12 +17,18 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
-from MySite.views import HomeView
+from MySite.views import HomeView, UserCreateView, UserCreateDoneTV
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
+
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^bookmark/', include('bookmark.urls', namespace='bookmark')),
     url(r'^photo/', include('photo.urls', namespace='photo')),
+
     url(r'^admin/', admin.site.urls),
+
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/register/$', UserCreateView.as_view(), name='register'),
+    url(r'^accounts/register/done$', UserCreateDoneTV.as_view(), name='register_done'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

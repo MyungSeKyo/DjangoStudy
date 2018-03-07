@@ -12,7 +12,7 @@
         <hr/>
         <div class="album-detail">
             {% for photo in object.photo_set.all %}
-                <div claa="album-detail-photo">
+                <div class="album-detail-photo">
                     <a href="{{ photo.get_absolute_url }}">
                         <img class="thumbnail" src="{{ photo.image.thumb_url }}"/>
                     </a>
