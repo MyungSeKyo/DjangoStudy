@@ -23,3 +23,5 @@ db.sqlite3
 ## autoenv
 .env
 
+
+media/

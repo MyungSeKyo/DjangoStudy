@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}album_list{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        {% for album in object_list%}
+            <div id="clear_float">
+                <h2><a href="{% url "photo:album_detail" album.id %}">{{ album.name }}</a></h2>
+                <p>{{ album.description }}</p>
+            </div>
+            <hr/>
+            <div class="album-list">
+                {% for photo in album.photo_set.all|slice:":5" %}
+                    <a href="{{ photo.get_absolute_url }}">
+                        <img class="thumbnail" src="{{ photo.image.thumb_url }}"/>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
