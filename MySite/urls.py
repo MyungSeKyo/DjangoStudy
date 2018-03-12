@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/register/$', UserCreateView.as_view(), name='register'),
     url(r'^accounts/register/done$', UserCreateDoneTV.as_view(), name='register_done'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

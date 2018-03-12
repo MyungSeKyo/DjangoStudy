@@ -129,3 +129,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
+
+
+# LOGIN_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
