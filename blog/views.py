@@ -62,6 +62,8 @@ class SearchFormView(FormView):
 
         return render(self.request, self.template_name, context=context)
 
+########################################################################################################################
+
 
 class PostCreateView(CreateView, LoginRequireMixin):
     model = Post
@@ -89,3 +91,7 @@ class PostUpdateView(UpdateView, LoginRequireMixin):
 class PostDeleteView(DeleteView, LoginRequireMixin):
     model = Post
     success_url = reverse_lazy('blog:index')
+
+########################################################################################################################
+
+
