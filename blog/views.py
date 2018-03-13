@@ -1,10 +1,12 @@
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, TodayArchiveView
 from django.db.models import Q
 from django.shortcuts import render
+from django.core.urlresolvers import reverse_lazy
 from blog.models import Post
 from blog.forms import PostSearchForm
+from MySite.views import LoginRequireMixin
 
 
 class PostLV(ListView):
@@ -59,3 +61,31 @@ class SearchFormView(FormView):
         context['object_list'] = post_list
 
         return render(self.request, self.template_name, context=context)
+
+
+class PostCreateView(CreateView, LoginRequireMixin):
+    model = Post
+    fields = ['title', 'description', 'content']
+    success_url = reverse_lazy('blog:index')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super(PostCreateView, self).form_valid(form)
+
+
+class PostChangeLV(ListView, LoginRequireMixin):
+    template_name = 'blog/post_change_list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(owner=self.request.user)
+
+
+class PostUpdateView(UpdateView, LoginRequireMixin):
+    model = Post
+    fields = ['title', 'description', 'content']
+    success_url = reverse_lazy('blog:index')
+
+
+class PostDeleteView(DeleteView, LoginRequireMixin):
+    model = Post
+    success_url = reverse_lazy('blog:index')

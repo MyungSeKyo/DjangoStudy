@@ -11,15 +11,15 @@
                 <p class="errornote">Wrong Please correct the error(s) below.</p>
             {% endif %}
             <p>Please enter your id and password.</p>
-
-            <fieldset class="aligned">
-                <div class="form-row">
-                    {{ form.username.label_tag }} {{ form.username }}
-                </div>
-                <div class="form-row">
-                    {{ form.password.label_tag }} {{ form.password }}
-                </div>
-            </fieldset>
+{#            <fieldset class="aligned">#}
+{#                <div class="form-row">#}
+{#                    {{ form.username.label_tag }} {{ form.username }}#}
+{#                </div>#}
+{#                <div class="form-row">#}
+{#                    {{ form.password.label_tag }} {{ form.password }}#}
+{#                </div>#}
+{#            </fieldset>#}
+            {{ form.as_p }}
             <div class="submit-row">
                 <input type="submit" value="Log In"/>
                 <input type="hidden" name="next" value="{{ next }}"/>

@@ -4,6 +4,12 @@ from blog.views import *
 app_name = 'blog'
 
 urlpatterns = [
+
+    url(r'^add/$', PostCreateView.as_view(), name='add'),
+    url(r'^change/$', PostChangeLV.as_view(), name='change'),
+    url(r'^(?P<pk>\d+)/update/$', PostUpdateView.as_view(), name='update'),
+    url(r'^(?P<pk>\d+)/delete/$', PostDeleteView.as_view(), name='delete'),
+
     url(r'^$', PostLV.as_view(), name='index'),
     url(r'^post/$', PostLV.as_view(), name='post_list'),
     url(r'^post/(?P<slug>[-\w]+)/$', PostDV.as_view(), name='post_detail'),
@@ -13,4 +19,6 @@ urlpatterns = [
     url(r'^(?P<year>\d+)/(?P<month>[-\w]+)/(?P<day>\d+)/$', PostDAV.as_view(), name='post_day_archive'),
     url(r'^today/$', PostTAV.as_view(), name='post_today_archive'),
     url(r'^search/$', SearchFormView.as_view(), name='search'),
+
+
 ]
